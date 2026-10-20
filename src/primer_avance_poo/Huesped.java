@@ -10,7 +10,7 @@ public class Huesped extends Persona
     private Boolean esFrecuente;
     private ArrayList<Reserva>HisorialReservas;
 
-    public Huesped(Boolean esFrecuente, ArrayList<Reserva> HisorialReservas) 
+    public Huesped() 
     {
         this.esFrecuente = false; //no inicia como visitante frecuente del hotel
         this.HisorialReservas = new ArrayList<>(); //se crea una lista de reservas al momento de crear un huesped
@@ -55,4 +55,34 @@ public class Huesped extends Persona
     public void setHisorialReservas(ArrayList<Reserva> HisorialReservas) {
         this.HisorialReservas = HisorialReservas;
     }   
+    public void AgregarReserva(Reserva r)
+    {
+        HisorialReservas.add(r);
+    }
+
+    @Override
+    //metodo sobrescrito de la clase padre 'persona'
+    public String MostrarDatosPersonales()
+    {
+        return "NOMBRE: "+this.nombre+" | APELLIDO PAT: "+this.apellido_pat+" | APELLIDO MAT: "+this.apellido_mat+" | TIPO DOC: "+this.tipo_doc+" | NRO DOC: "+this.nro_doc
+                +" | NACIONALIDAD: "+this.nacionalidad+" | TELEFONO: "+this.telefono+" | CORREO: "+this.correo;
+    }
+    public String MostrarDatosCliente()
+    {
+        StringBuilder sb = new StringBuilder();
+        String frecuente = (this.esFrecuente == true) ? "SI" : "NO";
+        sb.append("-------------------------HISTORIAL DE RESERVAS: CLIENTE "+this.nombre.toUpperCase()+" "+this.apellido_pat.toUpperCase()+"--------------------------\n");
+        if(HisorialReservas.isEmpty())
+        {
+            sb.append("EL CLIENTE NO CUENTA CON RESERVACIONES REGISTRADAS");
+        }
+        else
+        {
+            for(Reserva r : HisorialReservas)
+            {
+                sb.append(r.MostrarDatosReserva()).append("\n");
+            }
+        }
+        return "PREFERENCIAS: "+this.preferencias+" | CLIENTE FRECUENTE: "+frecuente+sb.toString();
+    }
 }

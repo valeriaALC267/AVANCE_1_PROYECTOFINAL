@@ -1,7 +1,7 @@
 
 package primer_avance_poo;
 
-public class Persona 
+public abstract class Persona 
 {
     protected String nombre;
     protected String apellido_pat;
@@ -21,7 +21,7 @@ public class Persona
 
     public void setNombre(String nombre)
     {
-        if(nombre == null || nombre.isEmpty())
+        if(nombre == null || nombre.trim().isEmpty())
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
@@ -34,7 +34,7 @@ public class Persona
 
     public void setApellido_pat(String apellido_pat) 
     {
-        if(apellido_pat == null || apellido_pat.isEmpty())
+        if(apellido_pat == null || apellido_pat.trim().isEmpty())
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
@@ -47,7 +47,7 @@ public class Persona
 
     public void setApellido_mat(String apellido_mat)
     {
-        if(apellido_mat == null || apellido_mat.isEmpty())
+        if(apellido_mat == null || apellido_mat.trim().isEmpty())
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
@@ -60,7 +60,7 @@ public class Persona
 
     public void setTipo_doc(String tipo_doc) 
     {
-        if(tipo_doc == null || tipo_doc.isEmpty())
+        if(tipo_doc == null || tipo_doc.trim().isEmpty())
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
@@ -77,7 +77,7 @@ public class Persona
 
     public void setNro_doc(String nro_doc) 
     {
-        if(nro_doc == null || nro_doc.isEmpty())
+        if(nro_doc == null || nro_doc.trim().isEmpty())
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
@@ -102,7 +102,7 @@ public class Persona
 
     public void setTelefono(String telefono) 
     {
-        if(telefono == null || telefono.isEmpty())
+        if(telefono == null || telefono.trim().isEmpty())
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
@@ -129,14 +129,18 @@ public class Persona
 
     public void setCorreo(String correo) 
     {
-        if(correo == null || correo.isEmpty())
+        if(correo == null || correo.trim().isEmpty())
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
-        if(!correo.contains("@") || !correo.contains("."))
+        
+        //regex para correo (admite .com, .es, .edu.pe, etc)
+        String regexCorreo = "^[A-Za-z0-9+_.-]+@(.+)$";
+        if(!correo.matches(regexCorreo))
         {
             throw new IllegalArgumentException("Error: Formato de correo invalido. Intente nuevamente:");
         }
         this.correo = correo;
     }
+    public abstract String MostrarDatosPersonales();
 }
