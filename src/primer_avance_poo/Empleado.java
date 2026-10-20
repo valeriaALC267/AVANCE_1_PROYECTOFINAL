@@ -32,7 +32,7 @@ public abstract class Empleado extends Persona
     }
 
     public void setJefe(Empleado jefe) 
-    {
+    { //para que un empleado no se tenga de jefe a si mismo
         if(jefe == this)
         {
             throw new IllegalArgumentException("Error: Un empleado no puede ser su propio jefe. Intente nuevamente:");
@@ -49,6 +49,7 @@ public abstract class Empleado extends Persona
     }
     public void AgregarSubordinado(Empleado e)
     {
+        //para que un empleado no sea su propio subordinado
         if(e == null)
         {
            throw new IllegalArgumentException("Error: Debe llenar este campo con informacion valida. Intente nuevamente:");
@@ -57,5 +58,6 @@ public abstract class Empleado extends Persona
         {
            throw new IllegalArgumentException("Error: Un empleado no puede ser su propio subordinado. Intente nuevamente:");
         }
+        ListaSubordinados.add(e);
     }
 }
