@@ -50,11 +50,7 @@ public class Huesped extends Persona
     public ArrayList<Reserva> getHisorialReservas()
     {
         return HisorialReservas;
-    }
-
-    public void setHisorialReservas(ArrayList<Reserva> HisorialReservas) {
-        this.HisorialReservas = HisorialReservas;
-    }   
+    } 
     public void AgregarReserva(Reserva r)
     {
         HisorialReservas.add(r);
@@ -83,6 +79,6 @@ public class Huesped extends Persona
                 sb.append(r.MostrarDatosReserva()).append("\n");
             }
         }
-        return "PREFERENCIAS: "+this.preferencias+" | CLIENTE FRECUENTE: "+frecuente+sb.toString();
+        return "NACIONALIDAD: "+this.nacionalidad+" | PREFERENCIAS: "+this.preferencias+" | CLIENTE FRECUENTE: "+frecuente+sb.toString();
     }
 }

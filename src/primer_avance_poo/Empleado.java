@@ -7,6 +7,7 @@ public abstract class Empleado extends Persona
 {
     protected double sueldo;
     protected Empleado jefe;
+    protected Departamento departamento;
     protected ArrayList<Empleado> ListaSubordinados;
 
     public Empleado() 
@@ -43,10 +44,6 @@ public abstract class Empleado extends Persona
     public ArrayList<Empleado> getListaSubordinados() {
         return ListaSubordinados;
     }
-
-    public void setListaSubordinados(ArrayList<Empleado> ListaSubordinados) {
-        this.ListaSubordinados = ListaSubordinados;
-    }
     public void AgregarSubordinado(Empleado e)
     {
         //para que un empleado no sea su propio subordinado
@@ -60,4 +57,16 @@ public abstract class Empleado extends Persona
         }
         ListaSubordinados.add(e);
     }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento)
+    {
+        this.departamento = departamento;
+    }
+    
+    public abstract double CalcularSueldo();
+    public abstract String MostrarDatosLaborales();
 }

@@ -81,6 +81,11 @@ public abstract class Persona
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
+        //regex para validar la entrada de digitos unicamente
+        if (!nro_doc.matches("^[0-9]+$")) 
+        {
+            throw new IllegalArgumentException("Error: El documento solo debe contener números.");
+        }
         if(this.tipo_doc.equalsIgnoreCase("dni") && nro_doc.length()!=8)
         {
             throw new IllegalArgumentException("Error: El DNI debe tener 8 digitos de forma obligatoria. Intente nuevamente:");
@@ -142,5 +147,9 @@ public abstract class Persona
         }
         this.correo = correo;
     }
-    public abstract String MostrarDatosPersonales();
+    public String MostrarDatosPersonales()
+    {
+        return "NOMBRE: "+this.nombre+" | APELLIDO PAT: "+this.apellido_pat+" | APELLIDO MAT: "+this.apellido_mat+" | TIPO DOC: "+this.tipo_doc+" | NRO DOC: "+this.nro_doc
+                +" | TELEFONO: "+this.telefono+" | CORREO: "+this.correo;
+    }
 }
