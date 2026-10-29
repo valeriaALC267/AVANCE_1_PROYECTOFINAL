@@ -13,6 +13,7 @@ public class Reserva
     private LocalDate fecha_fin;
     private Huesped cliente;
     private Recepcionista recepcionista_a_cargo;
+    private Factura factura;
     private ArrayList<Habitacion>ListaHabitaciones;
     public Reserva()
     {
@@ -22,6 +23,11 @@ public class Reserva
         //cortamos los 6 primeros digitos y lo pasamos a mayusculas:
         String codigo = uuidCompleto.substring(0,6).toUpperCase();
         this.cod_reserva = "HTL-"+codigo;
+        
+        //composicion en reserva-factura
+        //se crea la factura junto a su respectiva reserva
+        this.factura = new Factura();
+        this.factura.setReserva(this);
         
         ListaHabitaciones = new ArrayList<>();
     }
@@ -88,6 +94,10 @@ public class Reserva
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
         this.recepcionista_a_cargo = recepcionista_a_cargo;
+    }
+
+    public Factura getFactura() {
+        return factura;
     }
 
     public ArrayList<Habitacion> getListaHabitaciones() {

@@ -4,6 +4,9 @@ package primer_avance_poo;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 
 public class Factura 
 {
@@ -82,7 +85,6 @@ public class Factura
     public String MostrarDatosFactura()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append("----------------------------FACTURA ELECTRÓNICA---------------------------------\n");
         if(this.reserva == null)
         {
             sb.append("ESTA FACTURA NO ESTA ASOCIADA A NINGUNA RESERVA");
@@ -99,5 +101,18 @@ public class Factura
             sb.append(" | TOTAL: S/").append(CalcularTotal()).append("\n");
         }
         return sb.toString();
+    }
+    public void ExportarFacturaTXT(String nombre_archivo) throws IOException
+    {
+        try(PrintWriter escritor = new PrintWriter(new FileWriter(nombre_archivo)))
+        {
+            escritor.println("==========================================================================================");
+            escritor.println("                             🏨 COMPROBANTE DE PAGO - FACTURA 🏨                          ");
+            escritor.println("==========================================================================================");
+            escritor.println(MostrarDatosFactura());
+            escritor.println("==========================================================================================");
+            escritor.println("¡Gracias por su preferencia! Generado automáticamente por el Sistema de Hotel ✨");
+        
+        }
     }
 }
