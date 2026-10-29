@@ -110,7 +110,8 @@ public class Reserva
     
     public String MostrarDatosReserva()
     {
-        return "CODIGO RESERVA: "+this.cod_reserva+" | FECHA INICIO: "+this.fecha_inicio+" | FECHA FIN: "+this.fecha_fin+" | DOC HUESPED: "+this.cliente.getNro_doc()
+        return "CODIGO RESERVA: "+this.cod_reserva+" | FECHA INICIO: "+this.fecha_inicio.toString()+" | FECHA FIN: "+this.fecha_fin.toString()
+                +" | DOC HUESPED: "+this.cliente.getNro_doc()
                 +" | DOC RECEPCIONISTA: "+this.recepcionista_a_cargo.getNro_doc();
     }
     public String MostrarListaHabitaciones()
