@@ -48,6 +48,7 @@ public class HuespedController
             {
                 for(Huesped h : ListaHuespedes)
                 {
+                    escritor.println(h.MostrarDatosPersonales());
                     escritor.println(h.MostrarDatosCliente());
                     escritor.println("--------------------------------------------------------------------------------------");
                 }
