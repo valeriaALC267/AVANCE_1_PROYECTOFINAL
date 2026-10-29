@@ -1,7 +1,7 @@
 
 package primer_avance_poo;
 
-public abstract class Habitacion 
+public class Habitacion 
 {
     protected int nro_habitacion;
     protected String estado;
