@@ -2,6 +2,7 @@
 package primer_avance_poo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Reserva 
@@ -12,7 +13,7 @@ public class Reserva
     private LocalDate fecha_fin;
     private Huesped cliente;
     private Recepcionista recepcionista_a_cargo;
-    private Habitacion habitacion;
+    private ArrayList<Habitacion>ListaHabitaciones;
     public Reserva()
     {
         //UUID genera lgo como "550e8400-e29b-41d4-a716-446655440000"
@@ -21,6 +22,8 @@ public class Reserva
         //cortamos los 6 primeros digitos y lo pasamos a mayusculas:
         String codigo = uuidCompleto.substring(0,6).toUpperCase();
         this.cod_reserva = "HTL-"+codigo;
+        
+        ListaHabitaciones = new ArrayList<>();
     }
 
     public String getCod_reserva() {
@@ -87,27 +90,44 @@ public class Reserva
         this.recepcionista_a_cargo = recepcionista_a_cargo;
     }
 
-    public Habitacion getHabitacion() {
-        return habitacion;
+    public ArrayList<Habitacion> getListaHabitaciones() {
+        return ListaHabitaciones;
     }
 
-    public void setHabitacion(Habitacion habitacion)
+    public void AñadirHabitacion(Habitacion h)
     {
-        if(habitacion == null)
+        if(h == null)
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
         //validaciones para ver si sí se úede ocupar la habitacion
-        if ("mantenimiento".equalsIgnoreCase(habitacion.getEstado()) || "ocupada".equalsIgnoreCase(habitacion.getEstado())) 
+        if ("mantenimiento".equalsIgnoreCase(h.getEstado()) || "ocupada".equalsIgnoreCase(h.getEstado())) 
         {
             throw new IllegalArgumentException("Error: La habitación seleccionada no está disponible en este momento.");
         }
-        this.habitacion = habitacion;
+        ListaHabitaciones.add(h);
     }
     
     public String MostrarDatosReserva()
     {
         return "CODIGO RESERVA: "+this.cod_reserva+" | FECHA INICIO: "+this.fecha_inicio+" | FECHA FIN: "+this.fecha_fin+" | DOC HUESPED: "+this.cliente.getNro_doc()
-                +" | DOC RECEPCIONISTA: "+this.recepcionista_a_cargo.nro_doc+" | NRO HABITACION: "+this.habitacion.getNro_habitacion();
+                +" | DOC RECEPCIONISTA: "+this.recepcionista_a_cargo.getNro_doc();
+    }
+    public String MostrarListaHabitaciones()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("---------------------------LISTA DE HABITACIONES: RESERVA "+this.cod_reserva+"--------------------------------\n");
+        if(ListaHabitaciones.isEmpty())
+        {
+            sb.append("LA RESERVA NO TIENE HABITACIONES AUN");
+        }
+        else
+        {
+            for(Habitacion h : ListaHabitaciones)
+            {
+                sb.append(h.MostrarDatosHabitacion());
+            }
+        }
+        return sb.toString();
     }
 }

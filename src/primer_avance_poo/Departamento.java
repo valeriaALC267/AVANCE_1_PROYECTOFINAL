@@ -86,6 +86,6 @@ public class Departamento
         }
         sb.append("\n");
         return "ID DEPARTAMENTO: "+this.id_departamento+" | NOMBRE: "+this.nombre_departamento+" | PRESUPUESTO MENSUAL: "+this.presupuesto_mensual
-                +" | GERENTE  A CARGO: "+this.gerente_a_cargo+sb.toString();
+                +" | DOC GERENTE  A CARGO: "+this.gerente_a_cargo.getNro_doc()+sb.toString();
     }
 }

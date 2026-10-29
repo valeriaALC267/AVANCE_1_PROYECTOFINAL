@@ -52,4 +52,8 @@ public abstract class Habitacion
         }
         this.precio_noche = precio_noche;
     }
+    public String MostrarDatosHabitacion()
+    {
+        return "NRO HABITACION: "+this.nro_habitacion+" | PRECIO POR NOCHE: "+this.precio_noche+" | ESTADO: "+this.estado;
+    }
 }
