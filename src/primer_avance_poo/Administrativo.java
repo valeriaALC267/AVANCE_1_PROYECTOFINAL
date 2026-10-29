@@ -39,4 +39,15 @@ public class Administrativo extends Empleado
                 " | DOC JEFE: "+this.jefe.getNro_doc()
                 + "| NRO ANEXO: "+this.nro_anexo;
     }
+    public String MostrarListaSubordinados()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("--------------------------LISTA DE SUBORDINADOS-----------------------------\n");
+        for(Empleado e : ListaSubordinados)
+        {
+            sb.append(e.MostrarDatosLaborales());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

@@ -33,4 +33,15 @@ public class Gerente extends Empleado
         return "DOC GERENTE: "+this.nro_doc+" | DEPARTAMENTO: "+this.departamento.getNombre_departamento()
                 +" | SUELDO: S/"+CalcularSueldo()+" | BONO GESTION: "+this.bono_gestion;
     }
+    public String MostrarListaSubordinados()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("--------------------------LISTA DE SUBORDINADOS-----------------------------\n");
+        for(Empleado e : ListaSubordinados)
+        {
+            sb.append(e.MostrarDatosLaborales());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

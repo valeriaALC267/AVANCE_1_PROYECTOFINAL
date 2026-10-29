@@ -51,6 +51,14 @@ public class EmpleadoController
                     
                         escritor.println(e.MostrarDatosPersonales());
                         escritor.println(e.MostrarDatosLaborales());
+                        if(e instanceof Gerente)
+                        {
+                            escritor.println(((Gerente) e).MostrarListaSubordinados());
+                        }
+                        if(e instanceof Administrativo)
+                        {
+                            escritor.println(((Administrativo) e).MostrarListaSubordinados());
+                        }
                     
                    escritor.println("--------------------------------------------------------------------------------------");
                 }
