@@ -68,7 +68,7 @@ public class EmpleadoController
                 }
             }
             escritor.println("==========================================================================================");
-            escritor.println("Generado automáticamente por el Sistema de Hotel 🏨✨");
+            escritor.println("Generado automáticamente por el Sistema de Hotel 'Indigo Loft' 🏨✨");
         }
     }
 }

@@ -111,7 +111,7 @@ public class Factura
             escritor.println("==========================================================================================");
             escritor.println(MostrarDatosFactura());
             escritor.println("==========================================================================================");
-            escritor.println("¡Gracias por su preferencia! Generado automáticamente por el Sistema de Hotel ✨");
+            escritor.println("¡Gracias por su preferencia! Generado automáticamente por el Sistema de Hotel 'Indigo Loft' ✨");
         
         }
     }
