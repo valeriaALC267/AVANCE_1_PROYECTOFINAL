@@ -30,6 +30,10 @@ public class DepartamentoController
             ListaDepartamentos.add(d);
         }
     }
+    public Boolean EstaVacio()
+    {
+        return ListaDepartamentos.isEmpty();
+    }
     public void ExportarListaDepartamentosTXT(String nombre_archivo) throws IOException
     {
         try(PrintWriter escritor = new PrintWriter(new FileWriter(nombre_archivo)))

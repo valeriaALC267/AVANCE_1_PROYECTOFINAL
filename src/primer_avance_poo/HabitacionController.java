@@ -31,6 +31,10 @@ public class HabitacionController
             ListaHabitaciones.add(h);
         }
     }
+    public Boolean EstaVacia()
+    {
+        return ListaHabitaciones.isEmpty();
+    }
     public void ExportarListaHabitacionesTXT(String nombre_archivo) throws IOException
     {
         try(PrintWriter escritor = new PrintWriter(new FileWriter(nombre_archivo)))

@@ -31,6 +31,10 @@ public class EmpleadoController
             ListaEmpleados.add(e);
         }
     }
+    public Boolean EstaVacia()
+    {
+        return ListaEmpleados.isEmpty();
+    }
     public void ExportarListaEmpleadosTXT(String nombre_archivo) throws IOException
     {
         try(PrintWriter escritor = new PrintWriter(new FileWriter(nombre_archivo)))
