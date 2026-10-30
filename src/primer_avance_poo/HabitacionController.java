@@ -26,10 +26,19 @@ public class HabitacionController
     }
     public void AñadirHabitacion(Habitacion h)
     {
-        if(BuscarHabitacion(h.getNro_habitacion())==null)
-        {
-            ListaHabitaciones.add(h);
-        }
+        if(h == null)
+            {
+               throw new IllegalArgumentException("Error: La habitacion no puede ser nula.");
+            }
+
+        if(BuscarHabitacion(h.getNro_habitacion()) == null)
+           {
+               ListaHabitaciones.add(h);
+           }
+        else
+           {
+              throw new IllegalArgumentException("Error: Ya existe una habitacion con ese numero.");
+           }
     }
     public Boolean EstaVacia()
     {

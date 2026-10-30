@@ -26,10 +26,22 @@ public class HuespedController
     }
     public void AñadirHuesped(Huesped h)
     {
-        if(Buscarhuesped(h.getNro_doc())==null)
-        {
-            ListaHuespedes.add(h);
-        }
+        if(h == null)
+         {
+            throw new IllegalArgumentException("Error: El huesped no puede ser nulo.");
+         }
+        if(Buscarhuesped(h.getNro_doc()) == null)
+         {
+           ListaHuespedes.add(h);
+         }
+        else
+         {
+             throw new IllegalArgumentException("Error: Ya existe un huesped con ese documento.");
+         }
+    }
+    public Boolean EstaVacia()
+    {
+        return ListaHuespedes.isEmpty();
     }
     //lanza una excepcion verificada al momento de usar .txt
     public void ExportarListaHuespedesTXT(String nombre_archivo) throws IOException

@@ -17,7 +17,7 @@ public class EmpleadoController
     {
         for(Empleado e : ListaEmpleados)
         {
-            if(doc.equalsIgnoreCase(e.getNro_doc()))
+            if(doc.trim().equalsIgnoreCase(e.getNro_doc().trim()))
             {
                 return e;
             }
@@ -26,10 +26,16 @@ public class EmpleadoController
     }
     public void AñadirEmpleado(Empleado e)
     {
-        if(BuscarEmpleado(e.getNro_doc())==null)
-        {
-            ListaEmpleados.add(e);
-        }
+        if(e == null)
+         {
+           throw new IllegalArgumentException("El empleado no puede ser nulo.");
+         }
+
+        if(BuscarEmpleado(e.getNro_doc()) != null)
+         {
+           throw new IllegalArgumentException("Ya existe un empleado con ese documento.");
+         }
+        ListaEmpleados.add(e);
     }
     public Boolean EstaVacia()
     {

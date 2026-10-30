@@ -111,7 +111,7 @@ public class Reserva
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
         //validaciones para ver si sí se úede ocupar la habitacion
-        if ("mantenimiento".equalsIgnoreCase(h.getEstado()) || "ocupada".equalsIgnoreCase(h.getEstado())) 
+        if (!"disponible".equalsIgnoreCase(h.getEstado())) 
         {
             throw new IllegalArgumentException("Error: La habitación seleccionada no está disponible en este momento.");
         }

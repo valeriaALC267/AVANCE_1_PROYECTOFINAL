@@ -53,6 +53,10 @@ public class Huesped extends Persona
     } 
     public void AgregarReserva(Reserva r)
     {
+        if(r == null)
+        {
+            throw new IllegalArgumentException("Error: No se puede agregar una reserva nula.");
+        }
         HisorialReservas.add(r);
     }
 

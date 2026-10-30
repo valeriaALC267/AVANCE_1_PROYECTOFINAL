@@ -30,9 +30,11 @@ public class Conserje extends Empleado
     @Override
     public String MostrarDatosLaborales()
     {
-        
+        String documentoJefe = (this.jefe != null) 
+            ? this.jefe.getNro_doc() 
+            : "SIN JEFE";
       
         return "DOC CONSERJE: "+this.nro_doc+" | DEPARTAMENTO: "+this.departamento.getNombre_departamento()+" | SUELDO: S/"+CalcularSueldo()+" | ESPECIALIDAD: "+this.especialidad
-                +" | DOC JEFE: "+this.jefe.getNro_doc();
+                +" | DOC JEFE: "+documentoJefe;
     }    
 }

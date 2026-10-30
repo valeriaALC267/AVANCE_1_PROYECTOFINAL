@@ -38,9 +38,19 @@ public abstract class Empleado extends Persona
         {
             throw new IllegalArgumentException("Error: Un empleado no puede ser su propio jefe. Intente nuevamente:");
         }
+        
+        Empleado actual = jefe;
+
+         while(actual != null)
+         {
+            if(actual == this)
+              {
+                throw new IllegalArgumentException("Error: No se puede crear una jerarquia circular.");
+              }
+              actual = actual.getJefe();
+         }
         this.jefe = jefe;
     }
-
     public ArrayList<Empleado> getListaSubordinados() {
         return ListaSubordinados;
     }
@@ -54,6 +64,10 @@ public abstract class Empleado extends Persona
         if(e == this)
         {
            throw new IllegalArgumentException("Error: Un empleado no puede ser su propio subordinado. Intente nuevamente:");
+        }
+        if(ListaSubordinados.contains(e)) 
+        {
+           throw new IllegalArgumentException("Error: Este empleado ya está registrado como subordinado.");
         }
         ListaSubordinados.add(e);
     }

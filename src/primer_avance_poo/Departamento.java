@@ -53,10 +53,6 @@ public class Departamento
 
     public void setGerente_a_cargo(Gerente gerente_a_cargo) 
     {
-        if(gerente_a_cargo == null)
-        {
-            throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
-        }
         this.gerente_a_cargo = gerente_a_cargo;
     }
 
@@ -79,6 +75,7 @@ public class Departamento
     public String MostrarDatosDepartamento()
     {
         StringBuilder sb = new StringBuilder();
+        String gerente = (this.gerente_a_cargo==null) ? "SIN GERENTE" : this.gerente_a_cargo.getNro_doc();
         sb.append("-------------------------------LISTA DE EMPLEADOS DEPARTAMENTO"+this.nombre_departamento+"---------------------------------------\n");
         for(Empleado e : ListaEmpleados)
         {
@@ -86,6 +83,6 @@ public class Departamento
         }
         sb.append("\n");
         return "ID DEPARTAMENTO: "+this.id_departamento+" | NOMBRE: "+this.nombre_departamento+" | PRESUPUESTO MENSUAL: "+this.presupuesto_mensual
-                +" | DOC GERENTE  A CARGO: "+this.gerente_a_cargo.getNro_doc()+sb.toString();
+                +" | DOC GERENTE  A CARGO: "+gerente+sb.toString();
     }
 }

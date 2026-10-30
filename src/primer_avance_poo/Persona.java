@@ -81,20 +81,24 @@ public abstract class Persona
         {
             throw new IllegalArgumentException("Error: Debe llenar este campo primero. Intente nuevamente:");
         }
+        if(this.tipo_doc == null)
+        {
+           throw new IllegalArgumentException("Error: Primero debe establecer el tipo de documento.");
+        }
         //regex para validar la entrada de digitos unicamente
         if (!nro_doc.matches("^[0-9]+$")) 
         {
             throw new IllegalArgumentException("Error: El documento solo debe contener números.");
         }
-        if(this.tipo_doc.equalsIgnoreCase("dni") && nro_doc.length()!=8)
+        if(this.tipo_doc!=null && this.tipo_doc.equalsIgnoreCase("dni") && nro_doc.length()!=8)
         {
             throw new IllegalArgumentException("Error: El DNI debe tener 8 digitos de forma obligatoria. Intente nuevamente:");
         }
-        if(this.tipo_doc.equalsIgnoreCase("ce") && nro_doc.length()!=9)
+        if( this.tipo_doc!=null && this.tipo_doc.equalsIgnoreCase("ce") && nro_doc.length()!=9)
         {
             throw new IllegalArgumentException("Error: El CE debe tener 9 digitos de forma obligatoria. Intente nuevamente:");
         }
-        if(this.tipo_doc.equalsIgnoreCase("pas") && nro_doc.length()!=9)
+        if( this.tipo_doc!=null && this.tipo_doc.equalsIgnoreCase("pas") && nro_doc.length()!=9)
         {
             throw new IllegalArgumentException("Error: El PAS debe tener 9 digitos de forma obligatoria. Intente nuevamente:");
         }

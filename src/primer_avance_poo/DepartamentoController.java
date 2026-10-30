@@ -25,10 +25,16 @@ public class DepartamentoController
     }
     public void AñadirDepartamento(Departamento d)
     {
-        if(BuscarDepartamento(d.getId_departamento())==null)
-        {
-            ListaDepartamentos.add(d);
-        }
+       if(d == null)
+         {
+             throw new IllegalArgumentException("Error: El departamento no puede ser nulo.");
+         }
+
+       if(BuscarDepartamento(d.getId_departamento()) != null)
+         {
+             throw new IllegalArgumentException("Error: Ya existe un departamento con ese ID.");
+         }
+       ListaDepartamentos.add(d);
     }
     public Boolean EstaVacio()
     {
